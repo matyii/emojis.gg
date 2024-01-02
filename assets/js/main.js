@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   });
   function setRandomFavicon() {
-    const randomNumber = Math.floor(Math.random() * 78) + 1;
+    const randomNumber = Math.floor(Math.random() * 68) + 1;
     const faviconURL = `assets/favicons/${randomNumber}.png`;
     const favicon = document.createElement('link');
     favicon.rel = 'icon';

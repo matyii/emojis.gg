@@ -9,38 +9,40 @@ document.addEventListener('DOMContentLoaded', function() {
           button.textContent = emoji;
           button.className = 'btn btn-outline-light col-6 col-sm-4 col-md-3 col-lg-3 m-2 p-2';
   
-          const copyEmoji = () => {
+          const copyEmoji = (emoji) => {
             const textarea = document.createElement('textarea');
             textarea.value = emoji;
             document.body.appendChild(textarea);
             textarea.select();
           
             try {
-              button.classList.remove('btn-outline-light');
-              button.classList.add('btn-success');
-              button.textContent = 'Copied ✅';
-              setTimeout(() => {
-                button.textContent = emoji;
-                button.classList.remove('btn-success');
-                button.classList.add('btn-outline-light');
-              }, 1000);
+              const successful = document.execCommand('copy');
+              if (successful) {
+                button.classList.remove('btn-outline-light');
+                button.classList.add('btn-success');
+                button.textContent = 'Copied ✅';
+                setTimeout(() => {
+                  button.textContent = emoji;
+                  button.classList.remove('btn-success');
+                  button.classList.add('btn-outline-light');
+                }, 1000);
+              }
             } catch (err) {
               console.error('Error:', err);
             } finally {
               document.body.removeChild(textarea);
             }
           };
-
-          button.addEventListener('touchstart', function(event) {
-            event.preventDefault();
-            copyEmoji();
-          });
-  
+          
           button.addEventListener('click', function(event) {
             event.preventDefault();
-            copyEmoji();
+            copyEmoji(event.target.textContent);
           });
-  
+          
+          button.addEventListener('touchend', function(event) {
+            event.preventDefault();
+            copyEmoji(event.target.textContent);
+          });
           emojiButtonsRow.appendChild(button);
         });
   

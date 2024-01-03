@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         data.forEach(emoji => {
           const button = document.createElement('button');
           button.textContent = emoji;
-          button.className = 'btn btn-outline-light col-6 col-sm-4 col-md-3 col-lg-3 m-2 p-2';
+          button.className = 'btn btn-outline-light col-6 col-sm-4 col-md-3 col-lg-3 m-2 p-2 fs-2';
   
           const copyEmoji = (emoji) => {
             const textarea = document.createElement('textarea');

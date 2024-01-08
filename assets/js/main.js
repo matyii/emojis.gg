@@ -74,4 +74,3 @@ document.addEventListener('DOMContentLoaded', function() {
     head.appendChild(favicon);
   }
   document.addEventListener('DOMContentLoaded', setRandomFavicon);
-  document.addEventListener('DOMContentLoaded', setRandomFavicon);
